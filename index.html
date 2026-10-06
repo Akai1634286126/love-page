@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width,
+                     initial-scale=1,
+                     maximum-scale=1,
+                     user-scalable=no,
+                     viewport-fit=cover"
+    >
+
+    <meta name="theme-color" content="#090314">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <title>心海流光 · 给你的一封情书</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<div id="app">
+
+    <!-- ============================= -->
+    <!-- 背景 Canvas -->
+    <!-- ============================= -->
+
+    <canvas id="lightCanvas"></canvas>
+    <canvas id="particleCanvas"></canvas>
+    <canvas id="fireworkCanvas"></canvas>
+
+
+    <!-- ============================= -->
+    <!-- 开场页面 -->
+    <!-- ============================= -->
+
+    <section class="intro-screen" id="introScreen">
+
+        <div class="intro-glow"></div>
+
+        <div class="intro-content">
+
+            <div class="intro-small">
+                TO SOMEONE SPECIAL
+            </div>
+
+            <div class="intro-heart">
+                ♥
+            </div>
+
+            <h1>
+                把星光，寄给你。
+            </h1>
+
+            <p>
+                有一段音乐<br>
+                想和你一起听完。
+            </p>
+
+            <button class="primary-btn" id="startBtn">
+                <span>进入心海</span>
+                <strong>♥</strong>
+            </button>
+
+            <div class="intro-tip">
+                点击后音乐与心海流光会同步启动
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- 顶部 -->
+    <!-- ============================= -->
+
+    <header class="top-bar">
+
+        <div class="brand">
+            <span class="brand-dot"></span>
+            OUR STORY
+        </div>
+
+        <button class="mini-music-btn" id="musicBtn">
+            <span id="musicIcon">♫</span>
+            <span id="musicText">音乐</span>
+        </button>
+
+    </header>
+
+
+    <!-- ============================= -->
+    <!-- 主内容 -->
+    <!-- ============================= -->
+
+    <main>
+
+        <!-- HERO -->
+
+        <section class="hero section">
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    A LITTLE LOVE STORY
+                </div>
+
+                <h2>
+                    心海流光
+                </h2>
+
+                <p class="hero-subtitle">
+                    当音乐响起的时候，<br>
+                    我想让整片星海都知道你的名字。
+                </p>
+
+                <div class="hero-line"></div>
+
+                <p class="hero-note">
+                    戴上耳机，慢慢往下看。
+                </p>
+
+            </div>
+
+            <div class="scroll-hint">
+                <span></span>
+                SCROLL
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- 音乐可视化 -->
+        <!-- ============================= -->
+
+        <section class="section music-section">
+
+            <div class="section-label">
+                01 / MUSIC
+            </div>
+
+            <h2>
+                让音乐看得见
+            </h2>
+
+            <p class="section-desc">
+                下面这片光，会直接读取正在播放的音乐。
+                <br>
+                鼓点越强，心跳越明显。
+            </p>
+
+            <div class="visualizer-card">
+
+                <canvas id="visualizerCanvas"></canvas>
+
+                <div class="visualizer-center">
+                    <div class="visualizer-heart">
+                        ♥
+                    </div>
+
+                    <div class="visualizer-status" id="visualizerStatus">
+                        WAITING FOR MUSIC
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="music-info">
+
+                <div>
+                    <span>NOW PLAYING</span>
+                    <strong id="musicTitle">
+                        给你的一首歌
+                    </strong>
+                </div>
+
+                <div class="music-bars">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- 心海流光 -->
+        <!-- ============================= -->
+
+        <section class="section ocean-section">
+
+            <div class="section-label">
+                02 / OCEAN
+            </div>
+
+            <h2>
+                心海流光
+            </h2>
+
+            <p class="section-desc">
+                每一次音乐的起伏，都会在这里留下光。
+            </p>
+
+            <div class="ocean-card">
+
+                <div class="ocean-word">
+                    YOU
+                </div>
+
+                <div class="ocean-small-word">
+                    ARE MY FAVORITE STAR
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- 照片 -->
+        <!-- ============================= -->
+
+        <section class="section photo-section">
+
+            <div class="section-label">
+                03 / MEMORIES
+            </div>
+
+            <h2>
+                关于我们的照片
+            </h2>
+
+            <p class="section-desc">
+                把下面的照片换成你们真正的回忆。
+            </p>
+
+            <div class="photo-list" id="photoList">
+                <!-- JS 自动生成 -->
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- 故事 -->
+        <!-- ============================= -->
+
+        <section class="section story-section">
+
+            <div class="section-label">
+                04 / LETTER
+            </div>
+
+            <h2>
+                我想告诉你
+            </h2>
+
+            <div class="letter-card">
+
+                <p class="letter-line">
+                    我不知道该怎么形容喜欢一个人的感觉。
+                </p>
+
+                <p class="letter-line">
+                    但我知道，遇见你之后，
+                    很多普通的日子开始有了期待。
+                </p>
+
+                <p class="letter-line">
+                    以前觉得星星只是星星，
+                    月亮也只是月亮。
+                </p>
+
+                <p class="letter-line highlight">
+                    后来才发现，
+                    喜欢一个人以后，
+                    连夜空都会变得不一样。
+                </p>
+
+                <div class="letter-divider"></div>
+
+                <p class="letter-final">
+                    所以我做了这个小小的世界。
+                    <br>
+                    送给我最想认真对待的人。
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- 最终彩蛋 -->
+        <!-- ============================= -->
+
+        <section class="section final-section">
+
+            <div class="final-content">
+
+                <div class="final-mini">
+                    ONE LAST THING
+                </div>
+
+                <h2>
+                    还有一个彩蛋
+                </h2>
+
+                <p>
+                    如果你愿意，<br>
+                    请按下这里。
+                </p>
+
+                <button class="final-btn" id="finalBtn">
+                    <span>点亮最后的星河</span>
+                    <strong>♥</strong>
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ============================= -->
+    <!-- 底部 -->
+    <!-- ============================= -->
+
+    <footer>
+
+        <div class="footer-heart">
+            ♥
+        </div>
+
+        <p>
+            Made with love
+        </p>
+
+        <span>
+            For someone very special
+        </span>
+
+    </footer>
+
+
+    <!-- ============================= -->
+    <!-- 图片放大 -->
+    <!-- ============================= -->
+
+    <div class="lightbox" id="lightbox">
+
+        <button class="lightbox-close" id="lightboxClose">
+            ×
+        </button>
+
+        <img id="lightboxImage" src="" alt="照片">
+
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- 最终烟花 -->
+    <!-- ============================= -->
+
+    <div class="final-overlay" id="finalOverlay">
+
+        <div class="final-message">
+
+            <div class="final-message-small">
+                FOR YOU
+            </div>
+
+            <div class="big-heart">
+                ♥
+            </div>
+
+            <h2>
+                如果星河有方向
+            </h2>
+
+            <p>
+                那一定是奔向你。
+            </p>
+
+            <div class="final-sign">
+                永远留给你的一点光
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- 音乐 -->
+    <!-- ============================= -->
+
+    <audio
+            id="bgMusic"
+            preload="auto"
+            loop
+            playsinline
+            src="assets/music/love.mp3">
+    </audio>
+
+</div>
+
+
+<script src="assets/js/script.js"></script>
+
+</body>
+</html>
